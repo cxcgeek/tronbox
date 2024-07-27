@@ -1,15 +1,15 @@
 // SPDX-License-Identifier: MIT
 pragma solidity >= 0.4.22 <0.9.0;
 
-library console {
-	address constant CONSOLE_ADDRESS = address(0x000000000000000000636F6e736F6c652e6c6f67);
+library cxc {
+	address constant CXC_ADDRESS = address(0xa1b66d17823a7b93605146dfce15cc1c4d1ca30f);
 
 	function _sendLogPayload(bytes memory payload) private view {
 		uint256 payloadLength = payload.length;
-		address consoleAddress = CONSOLE_ADDRESS;
+		address cxcAddress = CXC_ADDRESS;
 		assembly {
 			let payloadStart := add(payload, 32)
-			let r := staticcall(gas(), consoleAddress, payloadStart, payloadLength, 0, 0)
+			let r := staticcall(gas(), cxcAddress, payloadStart, payloadLength, 0, 0)
 		}
 	}
 
